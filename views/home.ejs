@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>News Update</title>
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<style>
+  
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+  * {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  margin:0;
+  font-family: Pacifico;
+  padding: 0;
+  background: url(https://img.freepik.com/free-photo/background-soft-pink-orange-watercolour-painting_125540-2268.jpg?size=626&ext=jpg&ga=GA1.1.1138663403.1683299108&semt=ais) no-repeat;
+   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  color: black;
+  font-family: "open sans";
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  height: 70px;
+  background: #000000b0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  z-index: 99;
+}
+nav .navbar{
+  height: 100%;
+  max-width: 1250px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: auto;
+  padding: 0 50px;
+}
+.navbar .logo a{
+  font-size: 30px;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav .navbar .nav-links{
+  line-height: 70px;
+  height: 100%;
+}
+nav .navbar .links{
+  display: flex;
+}
+nav .navbar .links li{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0 14px;
+}
+nav .navbar .links li a{
+  height: 100%;
+  text-decoration: none;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+.links li:hover .htmlcss-arrow,
+.links li:hover .js-arrow{
+  transform: rotate(180deg);
+  }
+
+nav .navbar .links li .arrow{
+  height: 100%;
+  width: 22px;
+  line-height: 70px;
+  text-align: center;
+  display: inline-block;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+nav .navbar .links li .sub-menu{
+  position: absolute;
+  top: 70px;
+  left: 0;
+  line-height: 40px;
+  background: #000000b0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  border-radius: 0 0 4px 4px;
+  display: none;
+  z-index: 2;
+}
+nav .navbar .links li:hover .htmlCss-sub-menu,
+nav .navbar .links li:hover .js-sub-menu{
+  display: block;
+}
+.navbar .links li .sub-menu li{
+  padding: 0 22px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.navbar .links li .sub-menu a{
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+}
+.navbar .links li .sub-menu .more-arrow{
+  line-height: 40px;
+}
+.navbar .links li .htmlCss-more-sub-menu{
+  line-height: 40px;
+}
+.navbar .links li .sub-menu .more-sub-menu{
+  position: absolute;
+  top: 0;
+  left: 100%;
+  border-radius: 0 4px 4px 4px;
+  z-index: 1;
+  display: none;
+}
+.links li .sub-menu .more:hover .more-sub-menu{
+  display: block;
+}
+.navbar {
+  position: relative;
+   height: 40px;
+  width: 40px;
+}
+.navbar .search-box i{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 40px;
+  text-align: center;
+  font-size: 22px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.navbar .input-box{
+  position: absolute;
+  right: calc(100% - 40px);
+  top: 80px;
+  height: 60px;
+  width: 300px;
+  background: #3E8DA8;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+.navbar.showInput{
+  top: 65px;
+  opacity: 1;
+  pointer-events: auto;
+  background: #3E8DA8;
+}
+
+.navbar .nav-links .sidebar-logo{
+  display: none;
+}
+.navbar .bx-menu{
+  display: none;
+}
+@media (max-width:920px) {
+  nav .navbar{
+    max-width: 100%;
+    padding: 0 25px;
+  }
+
+  nav .navbar .logo a{
+    font-size: 27px;
+  }
+  nav .navbar .links li{
+    padding: 0 10px;
+    white-space: nowrap;
+  }
+  nav .navbar .links li a{
+    font-size: 15px;
+  }
+}
+@media (max-width:800px){
+  nav{
+    position: relative;
+  }
+  .navbar .bx-menu{
+    display: block;
+  }
+  nav .navbar .nav-links{
+    position: fixed;
+    top: 0;
+    left: -100%;
+    display: block;
+    max-width: 270px;
+    width: 100%;
+    background:  #3E8DA8;
+    line-height: 40px;
+    padding: 20px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.5s ease;
+    z-index: 1000;
+  }
+  .navbar .nav-links .sidebar-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .sidebar-logo .logo-name{
+    font-size: 25px;
+    color: #fff;
+  }
+    .sidebar-logo  i,
+    .navbar .bx-menu{
+      font-size: 25px;
+      color: #fff;
+    }
+  nav .navbar .links{
+    display: block;
+    margin-top: 20px;
+  }
+  nav .navbar .links li .arrow{
+    line-height: 40px;
+  }
+nav .navbar .links li{
+    display: block;
+  }
+nav .navbar .links li .sub-menu{
+  position: relative;
+  top: 0;
+  box-shadow: none;
+  display: none;
+}
+nav .navbar .links li .sub-menu li{
+  border-bottom: none;
+
+}
+.navbar .links li .sub-menu {
+  display: none;
+  position: relative;
+  left: 0;
+}
+.navbar .links li .sub-menu li{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.links li:hover .htmlcss-arrow,
+.links li:hover .js-arrow{
+  transform: rotate(0deg);
+  }
+  .navbar .links li .sub-menu {
+    display: none;
+  }
+  .navbar .links li .sub-menu .more span{
+    /* background: red; */
+    display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
+  }
+
+  .links li .sub-menu .more:hover {
+    display: none;
+  }
+  nav .navbar .links li:hover .htmlCss-sub-menu,
+  nav .navbar .links li:hover .js-sub-menu{
+    display: none;
+  }
+.navbar .nav-links.show1 .links .htmlCss-sub-menu,
+  .navbar .nav-links.show3 .links .js-sub-menu,
+  .navbar .nav-links.show2 .links .more .more-sub-menu{
+      display: block;
+    }
+    .navbar .nav-links.show1 .links .htmlcss-arrow,
+    .navbar .nav-links.show3 .links .js-arrow{
+        transform: rotate(180deg);
+}
+    .navbar .nav-links.show2 .links .more-arrow{
+      transform: rotate(90deg);
+    }
+}
+@media (max-width:370px){
+  nav .navbar .nav-links{
+  max-width: 100%;
+} 
+}
+/*-------------------------------------------------------------------------------------------------------------*/
+
+/* ------------------------------------------- TITLE SECTION --------------------------------------------------*/
+.titles{
+  text-align: center;
+  width: 50vw;
+  margin: 200px 00px 100px 350px;
+  color: rgb(75, 6, 6);
+}
+
+.titles h1{
+  font-family: Pacifico;
+  font-size: 5rem;
+  color: #252627;
+  margin-bottom: 0;
+  text-shadow: 1px 1px 0 black;
+}
+
+.titles p{
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: #252627;
+}
+
+img{
+  height: 60px;
+  width: 100px;
+  border-radius: 50%;
+}
+/*---------------------------------------- SERVICE ---------------------------------------------------*/
+
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 0px 8%;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 1000px;
+  margin-top: -150px;
+}
+
+.container h1 {
+  text-align: center;
+  padding-top: 10%;
+  margin-bottom: 60px;
+  font-weight: 600;
+  position: relative;
+  color: rgb(75, 6, 6);
+  font-family: Pacifico;
+  font-size: 40px;
+  text-shadow: 1px 1px 0 black;
+}
+
+.container h1::after {
+  content: '';
+  color: rgb(75, 6, 6);
+  width: 100px;
+  height: 5px;
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 30px;
+}
+
+.service {
+  text-align: center;
+  padding: 10px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  background: transparent;
+  transition: transform 0.5s, background 0.5s;
+}
+
+.service i {
+  font-size: 40px;
+  margin-bottom: 10px;
+  color: rgb(75, 6, 6);
+}
+
+.service h2 {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: rgb(75, 6, 6);
+}
+
+.service:hover {
+  color: rgb(75, 6, 6);
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.service:hover i {
+  color: #fff;
+}
+/*----------------------------------------------------------------------------------------------------*/
+
+/* ------------------------- START OF CSS FOR FOOTER ------------------------------- */
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #cfd2d6;
+}
+footer{
+  margin-top: -900px;
+	bottom: 0;
+	background: black;
+	height: 150px;
+	width: 1349px;
+	padding: 20px 0 0 0;
+}
+.footer{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+}
+.footer p{
+    margin: 1px auto;
+    line-height: 20px;
+    font-size: 14px;
+}
+.footer h2{
+    margin: 1px auto;
+    line-height: 20px;
+    font-size: 20px;
+}
+/* ------------------------------ SOCIAL MEDIA ----------------------- */
+.socials{
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+}
+.socials li{
+    margin: 0 10px;
+}
+.socials a{
+    text-decoration: none;
+    color: #fff;
+    border: 1.1px solid white;
+    padding: 5px;
+    border-radius: 50%;
+}
+.socials a i{
+    font-size: 1.1rem;
+    width: 20px;
+    transition: color .4s ease;
+}
+.socials a:hover i{
+    color: dodgerblue;
+}
+/* -------------------------- END OF CSS FOR FOOTER ---------------------------- */
+</style>
+<body>
+  <nav>
+    <div class="navbar">
+      <i class='bx bx-menu'></i>
+      <div class="logo"><a href=""><img src="/images/logo1.jpg"></a></div>
+      <div class="nav-links">
+        <div class="sidebar-logo">
+          <span class="logo-name">News Update</span>
+          <i class='bx bx-x' ></i>
+        </div>
+        <ul class="links">
+          <li><a href="/"><i class='bx bx-home'></i> HOME</a></li>
+          <li>
+            <a href="#"><i class='bx bx-category'></i> CATEGORIES</a>
+            <i class='bx bxs-chevron-down htmlcss-arrow arrow'></i>
+            <ul class="htmlCss-sub-menu sub-menu">
+              <li><a href="/business"><i class='bx bxs-business'></i> BUSINESS</a></li>
+              <li><a href="/education"><i class='bx bxs-book'></i> EDUCATION</a></li>
+              <li><a href="/sports"><i class='bx bx-trophy' ></i> SPORTS</a></li>
+              <li><a href="/technology"><i class='bx bx-desktop'></i> TECHNOLOGY</a></li>
+              <li><a href="/weather"><i class='bx bx-wind'></i> WEATHER</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="#"><i class='bx bxs-news'></i> NEWSPAPERS</a>
+            <i class='bx bxs-chevron-down js-arrow arrow '></i>
+            <ul class="js-sub-menu sub-menu">
+              <li><a href="/english"><i class="fas fa-globe"></i> ENGLISH</a></li>
+              <li><a href="/hindi"><i class="fas fa-newspaper"></i> HINDI</a></li>
+              <li><a href="/kannada"><i class="fas fa-book-open"></i> KANNADA</a></li>
+              <li><a href="/malayalam"><i class="fas fa-network-wired"></i> MALAYALAM</a></li>
+              <li><a href="/tamil"><i class="fas fa-align-justify"></i> TAMIL</a></li>
+              <li><a href="/telugu"><i class="fas fa-newspaper"></i> TELUGU</a></li>
+            </ul>
+          </li>
+          <li><a href="/signin"><i class='bx bx-comment-dots'></i> COMMENT</a></li>
+          <li><a href="/signin"><i class='bx bxs-user-rectangle'></i> LOGIN</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+  <section class="titles">
+
+    <h1>News Update</h1><br>
+    <p>In this website we are providing newspapers of different languages and catergories of news such as 
+      Educational news, Business news, Sports news, Technology news ...
+    </p>
+
+  </section>
+<!------------------------------------------------------------------------------------------------------------>
+    <div class="container">
+      <h1>Our Services</h1>
+      <div class="row">
+        <div class="service">
+          <a href="/business">
+            <i class="fas fa-business-time"></i>
+          </a>
+            <h2>Business</h2>
+        </div>
+        <div class="service">
+          <a href="/education">
+            <i class="fas fa-user-graduate"></i>
+          </a>
+            <h2>Education</h2>
+        </div>
+        <div class="service">
+          <a href="/english">
+            <i class="fas fa-globe"></i>
+          </a>
+            <h2>English Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/hindi">
+            <i class="fas fa-newspaper"></i>
+          </a>
+            <h2>Hindi Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/kannada">
+            <i class="fas fa-book-open"></i>
+          </a>
+            <h2>Kannada Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/malayalam">
+            <i class="fas fa-network-wired"></i>
+          </a>
+            <h2>Malayalam Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/sports">
+            <i class="fas fa-medal"></i>
+          </a>
+            <h2>Sports</h2>
+        </div>
+        <div class="service">
+          <a href="tamil">
+            <i class="fas fa-align-justify"></i>
+          </a>
+            <h2>Tamil Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/technology">
+            <i class="fas fa-laptop-code"></i>
+          </a>
+            <h2>Technology</h2>
+        </div>
+        <div class="service">
+          <a href="/telugu">
+            <i class="fas fa-newspaper"></i>
+          </a>
+            <h2>Telugu Newspaper</h2>
+        </div>
+        <div class="service">
+          <a href="/weather">
+            <i class="fas fa-temperature-high"></i>
+          </a>
+            <h2>Weather</h2>
+        </div>
+      </div>
+    </div>
+<!------------------------------------------------------------------------------------------------------------>
+
+<!------------------------------- FOOTER --------------------------------->
+  <footer>
+    <div class="footer">
+      <h2>About Us</h2>
+        <p>News Application is a service introduced to meet the above requirement and to make the people updated about the news,</p>   
+        <p>views, reviews, breaking news and latest headlines in different fields also the new inventions around the world.
+          </p>
+        <ul class="socials">
+            <li><a href="#"><i class='bx bxl-facebook'></i></a></li>
+            <li><a href="https://twitter.com/SIVATHARANI17"><i class='bx bxl-twitter'></i></a></li>
+            <li><a href="https://www.instagram.com/siva_tharani17/"><i class='bx bxl-instagram'></i></a></li>
+            <li><a href="https://www.linkedin.com/in/sivatharani-v-6771091b4/"><i class='bx bxl-linkedin-square'></i></a></li>
+        </ul>
+        <br>
+    </div>
+  </footer>
+  <!---------------------------------------------------------------------------------------------------------------------->
+</body>
+</html>

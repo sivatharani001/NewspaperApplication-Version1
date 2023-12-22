@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <title>Telugu Newspaper</title>
+</head>
+<style>
+  /* ----------------------------------- START OF CSS FOR HEADER ----------------------------*/
+  .header {
+    background: rgb(17, 235, 198);
+    color: white;
+    font-size: 30px;
+    font-weight: 900;
+    display: flex; /* text center */
+    align-items: center;
+    justify-content: center;
+    --border-size: 5px;
+    --border-angle: 5turn;
+    width: 1320px;
+    height: 60px;
+    background-image: conic-gradient(from var(--border-angle),#213, rgb(0, 57, 48) 50%,#213),
+      conic-gradient(from var(--border-angle),transparent 33%, rgb(7, 255, 185), rgb(0, 49, 225));
+    background-size: calc(100% - (var(--border-size) * 2))calc(100% - (var(--border-size) * 2)),cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-animation: bg-spin 4.5s linear infinite;
+    animation: bg-spin 4.5s linear infinite;
+    transition: all 1.5s;
+  }
+  @-webkit-keyframes bg-spin {
+    to {--border-angle: 1turn; }
+  }
+  @keyframes bg-spin {
+    to {--border-angle: 1turn}
+  }
+  @property --border-angle {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0turn;
+  }
+  /* ------------------------- END OF CSS FOR HEADER -------------------------------- */
+  
+  /* ------------------------------------ START OF CSS FOR BACKGROUND -------------------------- */
+  @import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+  body{
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    background-image: url(/images/watermark.jpg);
+    font-family: 'Roboto', sans-serif;
+  }
+  /* ------------------------------------ END OF CSS FOR BACKGROUND -------------------------- */
+  
+  /* ------------------------------------ START OF CSS FOR TABLE -------------------------- */
+    h1{
+    font-size: 30px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: 300;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  table{
+    width: 100%;
+    table-layout: auto;
+  }
+  .tbl-header{
+    background-color: rgba(0, 0, 0, 0.5);
+   }
+  .tbl-content{
+    overflow-x:auto;
+    margin-top: 0px;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  th{
+    padding: 20px 15px;
+    text-align: left;
+    font-weight: 700;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+  td{
+    padding: 15px;
+    text-align: left;
+    vertical-align:middle;
+    font-weight: 300;
+    font-size: 16px;
+    color: #fff;
+    border-bottom: solid 1px rgba(255,255,255,0.1);
+  }
+  /* ------------------------------------ END OF CSS FOR TABLE -------------------------- */
+
+
+  
+/* ------------------------------------ START OF CSS FOR TEXT ------------------------------------------ */
+input[type=text], select, textarea {    
+  width: 100%;    
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+input[type=email], select, textarea {    
+  width: 100%;   
+  padding: 12px;    
+  border: 1px solid rgb(70, 68, 68);    
+  border-radius: 4px;    
+  resize: vertical;    
+}    
+/* ------------------------------------------ END OF CSS FOR TEXT --------------------------------------- */
+
+/* ----------------------------------------- START OF CSS FOR LABEL -------------------------------------- */
+label {    
+  padding: 12px 12px 12px 0;    
+  display: inline-block;  
+  font-size: 16px;  
+  font-weight: 700;
+}    
+/* ------------------------------------------- END OF CSS FOR LABEL --------------------------------------- */
+
+.container {    
+  width: 30%;
+  border-radius: 5px;    
+  background-color: rgba(255, 255, 255, 0.801);
+  margin-left: 400px;
+  padding-left: 30px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+}    
+/* ------------------------------------ START OF CSS FOR SIZE ---------------------------------- */ 
+.col-25 {    
+  float: initial;   
+  width: 25%;    
+  margin-top: 6px; 
+  margin-left: 20px;   
+}    
+    
+.col-75 {    
+  float: none;    
+  width: 75%;    
+  margin-top: 6px;
+  margin-left: 20px;      
+}    
+
+.submit{
+  padding-top: 30px;
+  padding-left: 100px;
+}
+    
+h2{
+  margin-left: 500px;
+}
+
+.button{
+  color: rgb(34, 236, 243);
+  background-color: rgb(6, 7, 7);
+  height: 22px;
+  width: 250px;
+  font-size: large;
+  text-align: center;
+}
+
+.news{
+  color: rgb(34, 236, 243);
+  background-color: rgb(6, 7, 7);
+  margin-left: 1080px;
+  height: 22px;
+  width: 250px;
+  font-size: large;
+  text-align: center;
+}
+</style>
+
+<body>
+  <div class="header">NEWS UPDATE</div> 
+  <br>
+  <a href="/admin"><div class="button"><i class='bx bx-home'></i> Back to Admin Home Page</div></a>
+  <a href="/newspaper"><div class="news"><i class='bx bx-home'></i> Back to Newspaper Page</div></a>
+  <br>
+  <h2>Telugu Newspaper</h2>
+  <!---------------------------------- START OF HTML FOR FORM ------------------------------->
+  <div class="container">
+  <form action="/TeluguEdit" method="post">
+    <div class="row">    
+      <div class="col-25">    
+        <label for="name">NAME</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="name" name="name" placeholder="Enter your name..">    
+      </div>    
+    </div>
+    <div class="row">    
+      <div class="col-25">    
+        <label for="link">LINK</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="link" name="link" placeholder="Enter your link..">    
+      </div>    
+    </div>
+    <div class="row">    
+      <div class="col-25">    
+        <label for="image">IMAGE</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="image" name="image" placeholder="Enter your image..">    
+      </div>    
+    </div>
+    <div class="row">    
+      <div class="col-25">    
+        <label for="description">DESCRIPTION</label>    
+      </div>    
+      <div class="col-75">    
+        <input type="text" id="description" name="description" placeholder="Enter your description..">    
+      </div>    
+    </div>
+    <div class="submit">    
+      <button value="save" name="save">Add</button>
+      <button value="update" name="update">Update</button>
+      <button value="delete" name="delete">Delete</button>   
+    </div> 
+  </form>
+</div>
+  <!---------------------------------- END OF HTML FOR FORM ------------------------------->
+<br>
+<!--------------------------------- START OF HTML FOR TABLE HEADER -------------------------->
+  <div class="tbl-header">
+    <table>
+      <thead>
+        <tr>
+          <th>name</th>
+          <th>link</th>
+          <th>image</th>
+          <th>description</th>
+        </tr>
+      </thead>
+  </div>
+<!--------------------------------- END OF CSS FOR TABLE HEADER -------------------------->
+
+<!--------------------------------- START OF CSS FOR TABLE CONTENT -------------------------->
+    <% for(i=0; i< T2count;i++){%>
+  <div class="tbl-content">
+    <tbody>
+      <tr>
+        <td><%=telugu[i].name%></td>
+        <td><%=telugu[i].link%></td>
+        <td><%=telugu[i].image%></td>
+        <td><%=telugu[i].description%></td>
+      </tr>
+    </tbody>
+      <%}%>
+    </table>
+  </div>
+<!--------------------------------- END OF CSS FOR TABLE CONENT -------------------------->
+  
+</body>
+</html>
